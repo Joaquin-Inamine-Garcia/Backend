@@ -1,7 +1,7 @@
 <h1>          </h1>
 <div class="container" style="margin-center: 20px;">
     <div class="row">
-        <p class="text_end">Bienvenido/a <a class="btn btn-danger" href="admin/login/logout">Cerrar sesion <i
+        <p class="text_end">Bienvenido/a <a class="btn btn-danger" href="/admin/login/logout">Cerrar sesion <i
                     class="fas fa-sign-out-alt"></i></a></p>
     </div>
 
@@ -32,8 +32,10 @@
                         <th scope="row">{{id}}</th>
                         <td>{{Titulo}}</td>
                         <td class="text-end">
-                            <a class="btn btn-secondary" href="admin/Novedades/modificar{{id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                             <a class="btn btn-secondary" href="admin/Novedades/eliminar/{{id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a href="/admin/Novedades/modificar{{id}}" 
+                            class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                             <a href="/admin/Novedades/eliminar{{id}}" 
+                             class="btn btn-secondary"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     {{/each}}

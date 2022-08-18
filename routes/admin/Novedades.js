@@ -23,7 +23,8 @@ router.get('/agregar', (req, res, next) => {
 
 router.post('/agregar', async (req, res, next) => {
     try {
-        if (req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != "") {
+        if (req.body.Titulo != "" && req.body.Subtitulo != "" &&
+            req.body.Cuerpo != "") {
             await novedadesModel.insertNovedad(req.body);
             res.redirect('/admin/Novedades');
         } else {
@@ -49,7 +50,7 @@ router.get('/eliminar/:id', async (req, res, next) => {
     res.redirect('admin/Novedades');
 });
 
-router, get('/modificar/:id', async (req, res, next) => {
+router.get('/modificar/:id', async (req, res, next) => {
     var id = req.params.id;
     var novedades = await novedadesModel.getNovedadesById(id);
 
@@ -59,23 +60,23 @@ router, get('/modificar/:id', async (req, res, next) => {
     });
 });
 
-router.post('modificar', async (req, res, next) => {
+router.post('/modificar', async (req, res, next) => {
     try {
 
         var obj = {
             Titulo: req.body.Titulo,
-            subtitulo: req.body.subtitulo,
-            cuerpo: req.body.cuerpo
+            subtitulo: req.body.Subtitulo,
+            cuerpo: req.body.Cuerpo
         }
-        console.log(obj)
 
-        await novedadesModel.modificarNovedadById(obj, req.body, id);
-        res.redirect('admin/Novedades');
+        await novedadesModel.modificarNovedadById(obj, req.body.id);
+        res.redirect('/admin/Novedades');
 
     } catch (error) {
         console.log(error)
         res.render('admin/modificar', {
             layout: 'admin/layout',
+            error: true,
             message: "No se modifico la novedad"
         })
     }

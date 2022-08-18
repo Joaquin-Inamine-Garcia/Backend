@@ -1,7 +1,7 @@
 var pool = require('./bd');
 
 async function getNovedades() {
-        var query = 'select * from novedades order by id desc';
+        var query = 'select * from novedades order by Id desc';
         var rows = await pool.query(query);
         return rows;
 }
@@ -33,7 +33,7 @@ async function getNovedadesById(id) {
 async function modificarNovedadById(obj, id) {
         try {
                 var query = 'update novedades set ? where id = ?';
-                var rows = await pool.query(query, [obj, Id]);
+                var rows = await pool.query(query, [obj, id]);
                 return rows;
         } catch (error) {
                 throw error;
