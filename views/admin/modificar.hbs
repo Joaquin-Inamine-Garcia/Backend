@@ -5,11 +5,11 @@
             <form action="/admin/Novedades/modificar" method="post" enctype="multipart/form-data">
                 <input type="hidden" value='{{novedad.Id}}' name="Id">
                 <div class="mb-3 row">
-                    <input type="file" class="form-control" placeholder="Imagen" id="Imagen" value="{{novedad.imagen}}">
+                    <input type="file" class="form-control" placeholder="Imagen" Id="Imagen" value="{{novedad.imagen}}">
                     <p>
-                        <label><input type="checkbox" name="Img_delete" id="Img_delete" value="1">Eliminar imagen
+                        <label><input type="checkbox" name="img_delete" id="img_delete" value="1">Eliminar imagen
                             actual?</label>
-                        <input type="hidden" name="Img_original" value="{{novedad.Img_id}}">
+                        <input type="hidden" name="img_original" value="{{novedad.img_id}}">
                     </p>
                 </div>
 
