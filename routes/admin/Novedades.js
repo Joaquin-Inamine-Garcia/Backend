@@ -3,8 +3,8 @@ var router = express.Router();
 var novedadesModel = require('../../models/novedadesModel');
 const util = require('util');
 const cloudinary = require('cloudinary').v2;
-const uploader = util.promisify('cloudinary.uploader.upload');
-const destroy= util.promisify('cloudinary.uploader.destroy');
+const uploader = util.promisify(cloudinary.uploader.upload);
+const destroy= util.promisify(cloudinary.uploader.destroy);
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
@@ -78,21 +78,21 @@ router.post('/agregar', async (req, res, next) => {
     }
 })
 
-router.get('/eliminar/:id', async (req, res, next) => {
-    var id = req.params.id;
+router.get('/eliminar/:Id', async (req, res, next) => {
+    var Id = req.params.Id;
 
-let novedad = await novedadesModel.getNovedadesById(id);
+let novedad = await novedadesModel.getNovedadesById(Id);
 if (novedad.img_id) {
     await(destroy(novedad.img_id));
 }
 
-    await novedadesModel.deleteNovedadesById(id);
+    await novedadesModel.deleteNovedadesById(Id);
     res.redirect('admin/Novedades');
 });
 
 router.get('/modificar/:id', async (req, res, next) => {
-    var id = req.params.id;
-    var novedades = await novedadesModel.getNovedadesById(id);
+    var Id = req.params.Id;
+    var novedades = await novedadesModel.getNovedadesById(Id);
 
     res.render('admin/modificar', {
         layout: 'admin/layout',
@@ -128,7 +128,7 @@ router.post('/modificar', async (req, res, next) => {
             cuerpo: req.body.Cuerpo
         }
 
-        await novedadesModel.modificarNovedadById(obj, req.body.id);
+        await novedadesModel.modificarNovedadById(obj, req.body.Id);
         res.redirect('/admin/Novedades');
 
     } catch (error) {
