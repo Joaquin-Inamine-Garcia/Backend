@@ -1,7 +1,7 @@
 var pool = require('./bd');
 
 async function getNovedades() {
-        var query = 'select * from novedades order by Id DESC limit 5';
+        var query = 'select * from novedades order by Id desc limit 5';
         var rows = await pool.query(query);
         return rows;
 }
@@ -24,15 +24,15 @@ async function deleteNovedadesById(Id) {
         return rows;
 }
 
-async function getNovedadesById(Id) {
-        var query = 'select * from novedades where Id = ?'
+async function getNovedadById(Id) {
+        var query = 'select * from novedades where Id = ?';
         var rows = await pool.query(query, [Id]);
         return rows[0];
 }
 
 async function modificarNovedadById(obj, Id) {
         try {
-                var query = 'update novedades set ? where Id = ?';
+                var query = 'update novedades set ? where Id=?';
                 var rows = await pool.query(query, [obj, Id]);
                 return rows;
         } catch (error) {
@@ -40,4 +40,4 @@ async function modificarNovedadById(obj, Id) {
         }
 }
 
-module.exports = { getNovedades, insertNovedad, deleteNovedadesById, getNovedadesById, modificarNovedadById }
+module.exports = { getNovedades, insertNovedad, deleteNovedadesById, getNovedadById, modificarNovedadById }

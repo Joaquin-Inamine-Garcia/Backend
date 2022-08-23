@@ -5,24 +5,26 @@
             <form action="/admin/Novedades/agregar" method="post" enctype="multipart/form-data">
            
                 <div class="mb-3 row">
-                    <input type="text" class="form-control" placeholder="Titulo" name="titulo">
+                    <input type="text" class="form-control" 
+                    placeholder="Titulo" name="titulo"  enctype="multipart/form-data">
                 </div>
 
                 <div class="mb-3 row">
-                    <textarea type="text" class="form-control" placeholder="Subtitulo"
-                        name="subtitulo"></textarea>
+                    <textarea type="text" class="form-control" 
+                    placeholder="Subtitulo" name="subtitulo"  enctype="multipart/form-data"></textarea>
                 </div>
 
                 <div class="mb-3 row">
                     <label> Imagen: <input type="file"
-                    class="form-control" name="imagen" id="imagen"/></label>
+                     name="imagen" id="imagen"/></label>
                 </div>
 
                 <div class="mb-3 row">
-                    <textarea type="text" class="form-control" placeholder="Cuerpo" name="cuerpo"  enctype="multipart/form-data"></textarea>
+                    <textarea type="text" class="form-control" 
+                    placeholder="Cuerpo" name="cuerpo" enctype="multipart/form-data"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary" enctype="multipart/form-data">Guardar</button>
 
             </form>
             {{#if error}}
