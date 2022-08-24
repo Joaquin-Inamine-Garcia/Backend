@@ -17,10 +17,10 @@
 
                 <div class="form-group">
                     <p>
-                        <label>Imagen <input type="file" class="form-control" name="Imagen" id="imagen"/></label>
+                        <label>imagen <input type="file" class="form-control" name="imagen" id="imagen"/></label>
                     </p>
                     <p>
-                        <label> <input type="checkbox" name="img_delete" id="img_delete" value="1">Eliminar imagen
+                        <label><input type="checkbox" name="img_delete" id="img_delete" value="1">Eliminar imagen
                             actual?</label>
                         <input type="hidden" name="img_original" value="{{novedad.img.id}}">
                     </p>
@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     <label for="">Cuerpo</label>
-                    <textarea type="text" class="form-control" name="cuerpo" {{novedad.Cuerpo}}></textarea>
+                    <textarea type="text" class="form-control" name="cuerpo">{{novedad.Cuerpo}}</textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Modificar</button>
