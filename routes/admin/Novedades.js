@@ -14,8 +14,8 @@ router.get('/', async function (req, res, next) {
     novedades = novedades.map(novedad => {
         if (novedad.img_id) {
             const imagen = cloudinary.image(novedad.img_id, {
-                width: 100,
-                height: 100,
+                width: 300,
+                height: 200,
                 crop: 'fill'
             });
             return {
@@ -136,7 +136,7 @@ router.post('/modificar', async (req, res, next) => {
         res.redirect('/admin/Novedades');
 
     } catch (error) {
-        console.log(error)
+ 
         res.render('admin/modificar', {
             layout: 'admin/layout',
             error: true,
