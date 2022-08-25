@@ -14,8 +14,8 @@ router.get('/', async function (req, res, next) {
     novedades = novedades.map(novedad => {
         if (novedad.img_id) {
             const imagen = cloudinary.image(novedad.img_id, {
-                width: 100,
-                height: 100,
+                width: 300,
+                height: 200,
                 crop: 'fill'
             });
             return {
@@ -25,7 +25,7 @@ router.get('/', async function (req, res, next) {
         } else {
             return {
                 ...novedad,
-                imagen
+                imagen:''
                 
             }
         }
@@ -113,7 +113,7 @@ router.post('/modificar', async (req, res, next) => {
             borrar_img_vieja = true;
         } else {
             if (req.files && Object.keys(req.files).length > 0) {
-                img_id = req.files.imagen;
+                imagen = req.files.imagen;
                 img_id = (await uploader(imagen.tempFilePath)).public_id;
                 borrar_img_vieja = true;
             }
@@ -136,7 +136,7 @@ router.post('/modificar', async (req, res, next) => {
         res.redirect('/admin/Novedades');
 
     } catch (error) {
-        console.log(error)
+ 
         res.render('admin/modificar', {
             layout: 'admin/layout',
             error: true,
