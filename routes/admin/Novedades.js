@@ -20,12 +20,13 @@ router.get('/', async function (req, res, next) {
             });
             return {
                 ...novedad,
-                imagen: ''
+                imagen
             }
         } else {
             return {
                 ...novedad,
-                imagen: ''
+                imagen
+                
             }
         }
     });
@@ -56,7 +57,7 @@ router.post('/agregar', async (req, res, next) => {
             req.body.Cuerpo != "") {
 
             await novedadesModel.insertNovedad({
-                ...req.body.
+                ...req.body,
                 img_id
             });
 
@@ -91,8 +92,7 @@ router.get('/eliminar/:Id', async (req, res, next) => {
 });
 
 router.get('/modificar/:id', async (req, res, next) => {
-    var Id = req.params.Id;
-    console.log(req.params.Id);
+    var Id = req.params.id;
     var novedad = await novedadesModel.getNovedadById(Id);
 
     res.render('admin/modificar', {
@@ -113,7 +113,7 @@ router.post('/modificar', async (req, res, next) => {
             borrar_img_vieja = true;
         } else {
             if (req.files && Object.keys(req.files).length > 0) {
-                imagen = req.files.imagen;
+                img_id = req.files.imagen;
                 img_id = (await uploader(imagen.tempFilePath)).public_id;
                 borrar_img_vieja = true;
             }
@@ -124,9 +124,9 @@ router.post('/modificar', async (req, res, next) => {
 
 
         var obj = {
-            titulo: req.body.Titulo,
-            subtitulo: req.body.Subtitulo,
-            cuerpo: req.body.Cuerpo,
+            Titulo: req.body.Titulo,
+            Subtitulo: req.body.Subtitulo,
+            Cuerpo: req.body.Cuerpo,
             img_id
         }
 
